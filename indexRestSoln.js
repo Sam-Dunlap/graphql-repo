@@ -91,13 +91,13 @@ var root = {
   restaurant : (arg)=>restaurants[arg.id],
   restaurants : ()=> restaurants,
   setrestaurant : ({input}) => {
-    restaurants.push({name:input.name,email:input.email,age:input.age})
+    restaurants.push({name:input.name,description:input.description,id:(restaurants.length - 1)})
     return input
   },
   deleterestaurant : ({id})=>{
     const ok = Boolean(restaurants[id])
     let delc = restaurants[id];
-    restaurants = restaurants.filter(item => item.id !== id)
+    restaurants.splice(id, 1);
     console.log(JSON.stringify(delc)) 
     return {ok}
   },
